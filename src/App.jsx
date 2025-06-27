@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import MinhaFrotaPage from './pages/MinhaFrotaPage';
 import SolicitacoesPage from './pages/SolicitacoesPage';
+import GestaoDeTalentosPage from './pages/GestaoDeTalentosPage'; // NOVO: Importando a página
 
 const isAuthenticated = true; 
 
@@ -13,12 +14,13 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-
+        
         <Route path="/" element={isAuthenticated ? <MainLayout /> : <Navigate to="/login" />} >
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<DashboardPage />} />
-          <Route path="frota" element={<MinhaFrotaPage />} />
           <Route path="solicitacoes" element={<SolicitacoesPage />} />
+          <Route path="frota" element={<MinhaFrotaPage />} />
+          <Route path="talentos" element={<GestaoDeTalentosPage />} /> {/* NOVO: Adicionando a rota */}
         </Route>
       </Routes>
     </Router>

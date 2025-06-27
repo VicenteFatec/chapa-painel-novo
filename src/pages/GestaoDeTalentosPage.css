@@ -1,0 +1,226 @@
+.gestao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.gestao-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.gestao-subtitle {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.action-buttons-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.import-button-csv {
+    background-color: #10b981; /* verde */
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.import-button-csv:hover {
+    background-color: #059669;
+}
+
+.import-button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.import-button:hover {
+    background-color: #004494;
+}
+
+.import-button:active, .import-button-csv:active {
+    transform: scale(0.98);
+}
+
+.import-status-feedback {
+    background-color: #eef2ff;
+    color: #4338ca;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.talentos-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.talentos-table th, .talentos-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.talentos-table thead {
+    background-color: #f9fafb;
+}
+
+.talentos-table th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.user-avatar {
+    background-color: #e5e7eb;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4b5563;
+    overflow: hidden; /* Garante que a imagem fique contida no círculo */
+}
+
+.user-avatar .avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+}
+
+.status-disponível {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-em-serviço {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.status-de-férias {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+
+.status-bloqueado {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.talentos-table td .action-button-details,
+.talentos-table td .action-button-edit {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-right: 0.5rem;
+    color: #6b7280;
+}
+
+.talentos-table td .action-button-details:hover,
+.talentos-table td .action-button-edit:hover {
+    color: #1f2937;
+}
+
+/* Estilos para o Upload no Modal */
+.upload-section {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+}
+
+.upload-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.upload-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.upload-button:hover {
+    background-color: #e0e0e0;
+}
+
+.upload-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.upload-feedback {
+    font-size: 0.9rem;
+    color: green;
+    font-weight: 500;
+}
+
+.upload-progress-feedback {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 500;
+    color: #0056b3;
+}

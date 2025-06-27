@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, ClipboardList, LogOut } from 'lucide-react';
+import { LayoutDashboard, Users, ClipboardList, LogOut, Award } from 'lucide-react'; // NOVO: Ícone Award adicionado
 import './MainLayout.css';
 
 function MainLayout() {
@@ -23,10 +23,14 @@ function MainLayout() {
             <LayoutDashboard size={20} />
             <span>Dashboard</span>
           </NavLink>
-          {/* AQUI ESTÁ A CORREÇÃO: O LINK APONTA PARA "/solicitacoes" */}
           <NavLink to="/solicitacoes" className="nav-link">
             <ClipboardList size={20} />
             <span>Mesa de Operações</span>
+          </NavLink>
+          {/* NOVO: Link para a Gestão de Talentos */}
+          <NavLink to="/talentos" className="nav-link">
+            <Award size={20} />
+            <span>Gestão de Talentos</span>
           </NavLink>
           <NavLink to="/frota" className="nav-link">
             <Users size={20} />
