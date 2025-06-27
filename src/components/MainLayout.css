@@ -1,0 +1,112 @@
+:root {
+  --sidebar-bg-color: #1a202c; /* Cinza bem escuro, quase preto */
+  --sidebar-text-color: #a0aec0; /* Cinza claro */
+  --sidebar-hover-bg: #2d3748;   /* Cinza um pouco mais claro */
+  --sidebar-active-bg: #0056b3;  /* Azul que já estamos usando */
+  --content-bg-color: #f7fafc;  /* Cinza bem claro para o conteúdo */
+}
+
+.main-layout {
+  display: flex;
+  height: 100vh;
+  background-color: var(--content-bg-color);
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg-color);
+  color: var(--sidebar-text-color);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  transition: width 0.3s ease;
+}
+
+.sidebar-header {
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--sidebar-text-color);
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+  background-color: var(--sidebar-hover-bg);
+  color: white;
+}
+
+.nav-link.active {
+  background-color: var(--sidebar-active-bg);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);
+}
+
+.nav-link span {
+  margin-left: 0.75rem;
+}
+
+.sidebar-footer {
+  border-top: 1px solid #2d3748;
+  padding-top: 1rem;
+}
+
+.user-info {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.user-email {
+  font-size: 0.875rem;
+  display: block;
+  text-align: center;
+  word-break: break-all;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: none;
+  border: 1px solid var(--sidebar-text-color);
+  color: var(--sidebar-text-color);
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: var(--sidebar-text-color);
+  color: var(--sidebar-bg-color);
+}
+
+.logout-button span {
+  margin-left: 0.5rem;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto; /* Permite rolagem se o conteúdo for grande */
+}
