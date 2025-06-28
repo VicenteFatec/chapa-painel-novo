@@ -1,16 +1,22 @@
 .solicitacoes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 2rem;
 }
+
 .solicitacoes-title {
     font-size: 2rem;
     font-weight: 700;
     color: #1f2937;
 }
+
 .solicitacoes-subtitle {
     font-size: 1rem;
     color: #6b7280;
     margin-top: 0.25rem;
 }
+
 .solicitacoes-table {
     width: 100%;
     border-collapse: collapse;
@@ -19,14 +25,17 @@
     overflow: hidden;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
+
 .solicitacoes-table th, .solicitacoes-table td {
     padding: 1rem 1.5rem;
     text-align: left;
     border-bottom: 1px solid #e5e7eb;
 }
+
 .solicitacoes-table thead {
     background-color: #f9fafb;
 }
+
 .solicitacoes-table th {
     font-size: 0.75rem;
     font-weight: 600;
@@ -34,34 +43,270 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
+
 .solicitacoes-table tbody tr:last-child td {
     border-bottom: none;
 }
+
 .solicitacoes-table tbody tr:hover {
     background-color: #f3f4f6;
 }
+
 .status-cell {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-weight: 500;
 }
+
 .text-yellow-500 { color: #f59e0b; }
 .text-green-500 { color: #10b981; }
 .text-blue-500 { color: #3b82f6; }
 .text-red-500 { color: #ef4444; }
 .text-gray-500 { color: #6b7280; }
-.view-details-button {
-    background-color: #0056b3;
-    color: white;
+
+.region-tag-solicitacao {
+    font-size: 0.75rem;
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+.datas-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.85rem;
+}
+
+.datas-cell strong {
+    color: #4b5563;
+}
+
+.actions-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.view-details-button, .finish-button, .view-details-button-secondary {
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.view-details-button {
+    background-color: #0056b3;
+    color: white;
 }
 .view-details-button:hover {
     background-color: #004494;
+}
+
+.finish-button {
+    background-color: #3b82f6;
+    color: white;
+}
+.finish-button:hover {
+    background-color: #2563eb;
+}
+
+.view-details-button-secondary {
+    background-color: #e5e7eb;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+.view-details-button-secondary:hover {
+    background-color: #d1d5db;
+}
+
+/* --- ESTILOS PARA A MESA DE CURADORIA (DENTRO DO MODAL) --- */
+.curadoria-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .curadoria-container {
+        flex-direction: row;
+        gap: 2rem;
+    }
+}
+
+.curadoria-coluna {
+    flex: 1;
+    min-width: 0;
+}
+
+.curadoria-coluna h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detalhes-bloco {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.detalhes-bloco:last-child {
+    margin-bottom: 0;
+}
+
+.detalhes-bloco h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detalhes-solicitacao {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detalhe-item strong {
+    display: block;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+}
+
+.detalhe-item p {
+    margin: 0;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.detalhes-financeiro {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.valor-item {
+    text-align: center;
+    flex: 1;
+    min-width: 80px;
+}
+
+.valor-item strong {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.valor-item.bruto strong { color: #3b82f6; }
+.valor-item.comissao strong { color: #ef4444; }
+.valor-item.liquido strong { color: #16a34a; }
+
+.valor-item span {
+    display: block;
+    font-size: 0.8rem;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+
+.requisitos-texto {
+    white-space: pre-wrap;
+    font-family: inherit;
+    line-height: 1.6;
+}
+
+.advertencia-bloco {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border-left: 4px solid #ef4444;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+/* --- ESTILOS CORRIGIDOS PARA A LISTA DE TRABALHADORES SUGERIDOS --- */
+.lista-sugeridos {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.sugerido-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    gap: 1rem; /* Adiciona um espaço entre os itens */
+}
+
+.sugerido-item:last-child {
+    border-bottom: none;
+}
+
+.sugerido-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-grow: 1; /* Permite que esta área cresça */
+    min-width: 0; /* Essencial para o nome quebrar a linha corretamente */
+}
+
+.sugerido-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0; /* Impede que o avatar encolha */
+}
+
+.sugerido-nome {
+    font-weight: 600;
+    white-space: nowrap; /* Impede que o nome quebre em várias linhas */
+    overflow: hidden; /* Esconde o que não couber */
+    text-overflow: ellipsis; /* Adiciona "..." ao final de nomes muito longos */
+}
+
+.alocar-btn {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-shrink: 0; /* Impede que o botão encolha */
+}
+
+.alocar-btn:hover {
+    background-color: #059669;
 }
