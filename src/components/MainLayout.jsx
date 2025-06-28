@@ -30,7 +30,7 @@ function MainLayout() {
           {/* NOVO: Link para a Gestão de Talentos */}
           <NavLink to="/talentos" className="nav-link">
             <Award size={20} />
-            <span>Gestão de Talentos</span>
+            <span>Gestão de Trabalhadores</span>
           </NavLink>
           <NavLink to="/frota" className="nav-link">
             <Users size={20} />
