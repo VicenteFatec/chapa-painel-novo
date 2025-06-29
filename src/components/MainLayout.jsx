@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, ClipboardList, LogOut, Award } from 'lucide-react'; // NOVO: Ícone Award adicionado
+import { LayoutDashboard, Users, ClipboardList, LogOut, Award } from 'lucide-react';
 import './MainLayout.css';
 
 function MainLayout() {
@@ -16,7 +16,9 @@ function MainLayout() {
     <div className="main-layout">
       <aside className="sidebar">
         <div className="sidebar-header">
-          <img src="/logo-chapa-amigo.svg" alt="Chapa Amigo Empresas" className="logo" />
+          <img src="/images/logo.svg" alt="Chapa Amigo Empresas Logo" className="logo" />
+          {/* ALTERADO: Adicionamos o título ao lado do logo */}
+          <h1>Chapa Amigo Empresas</h1>
         </div>
         <nav className="sidebar-nav">
           <NavLink to="/dashboard" className="nav-link">
@@ -27,7 +29,6 @@ function MainLayout() {
             <ClipboardList size={20} />
             <span>Mesa de Operações</span>
           </NavLink>
-          {/* NOVO: Link para a Gestão de Talentos */}
           <NavLink to="/talentos" className="nav-link">
             <Award size={20} />
             <span>Gestão de Trabalhadores</span>

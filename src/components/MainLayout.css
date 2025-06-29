@@ -110,3 +110,25 @@
   padding: 2rem;
   overflow-y: auto; /* Permite rolagem se o conteúdo for grande */
 }
+/* --- ESTILOS DO CABEÇALHO DA SIDEBAR --- */
+
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center; /* Alinha o logo e o texto verticalmente */
+    gap: 12px; /* Espaço entre o logo e o texto */
+    border-bottom: 1px solid #374151; /* Linha separadora */
+}
+
+.sidebar-header .logo {
+    height: 40px; /* Define uma altura fixa para o logo */
+    width: auto;  /* A largura se ajusta automaticamente */
+}
+
+.sidebar-header h1 {
+    color: #ffffff;
+    font-size: 1rem; /* Tamanho da fonte do título */
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0; /* Remove margens padrão do h1 */
+}
