@@ -1,5 +1,5 @@
 /* =================================== */
-/* ESTILOS GERAIS DA PÁGINA           */
+/* ESTILOS GERAIS DA PÁGINA            */
 /* =================================== */
 
 .solicitacoes-header {
@@ -19,7 +19,7 @@
 }
 
 /* =================================== */
-/* ESTILOS DA TABELA PRINCIPAL        */
+/* ESTILOS DA TABELA PRINCIPAL         */
 /* =================================== */
 
 .solicitacoes-table {
@@ -88,10 +88,9 @@
 .acoes-cell {
     display: flex;
     align-items: center;
-    gap: 8px; /* Espaçamento entre os botões */
+    gap: 8px;
 }
 
-/* Base para TODOS os botões de ação, para consistência */
 .acoes-cell button {
     display: inline-flex;
     align-items: center;
@@ -107,7 +106,7 @@
 }
 
 .ticket-button {
-    background-color: #f59e0b; /* Dourado */
+    background-color: #f59e0b;
     color: white;
     border-color: #d97706;
 }
@@ -117,7 +116,7 @@
 }
 
 .finish-button {
-    background-color: #3b82f6; /* Azul */
+    background-color: #3b82f6;
     color: white;
 }
 .finish-button:hover {
@@ -126,7 +125,7 @@
 }
 
 .view-details-button {
-    background-color: #6b7280; /* Cinza */
+    background-color: #6b7280;
     color: white;
 }
 .view-details-button:hover {
@@ -135,7 +134,7 @@
 }
 
 /* =================================== */
-/* ESTILOS DO MODAL DE CURADORIA      */
+/* ESTILOS DO MODAL DE CURADORIA       */
 /* =================================== */
 
 .curadoria-container {
@@ -186,12 +185,12 @@
 }
 
 /* =================================== */
-/* NOVO: ESTILOS DA BUSCA NO MODAL    */
+/* NOVO: ESTILOS DA BUSCA NO MODAL     */
 /* =================================== */
 
 .search-form {
     display: flex;
-    flex-direction: column; /* Coloca os itens um abaixo do outro */
+    flex-direction: column;
     gap: 8px;
     margin-bottom: 8px;
 }
@@ -216,6 +215,7 @@
     border-radius: 6px;
     outline: none;
     transition: border-color 0.2s;
+    box-sizing: border-box; /* <<< AQUI ESTÁ A CORREÇÃO ADICIONADA */
 }
 
 .search-input-wrapper input:focus {
@@ -315,7 +315,6 @@
 .alocar-btn:hover {
     background-color: #059669;
 }
-/* --- AJUSTE FINO NO LAYOUT DA LISTA DE SUGERIDOS --- */
 
 .sugerido-info > div {
     display: flex;
@@ -323,12 +322,12 @@
 }
 
 .sugerido-nome {
-    white-space: normal; /* Permite que o nome quebre em palavras */
+    white-space: normal;
     overflow: visible;
     text-overflow: unset;
-    line-height: 1.2; /* Melhora o espaçamento entre as linhas do nome */
+    line-height: 1.2;
 }
 
 .sugerido-regiao {
-    margin-top: 2px; /* Pequeno espaço entre o nome e a região */
+    margin-top: 2px;
 }

@@ -21,7 +21,6 @@ const regioesSinonimos = {
     'São Paulo (Capital)': ['SP (Capital)'],
     'SP (Capital)': ['São Paulo (Capital)'],
 };
-
 function SolicitacoesPage() {
     const [solicitacoes, setSolicitacoes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -220,16 +219,20 @@ function SolicitacoesPage() {
                     {solicitacaoSelecionada?.status === 'pendente' && (
                         <div className="curadoria-coluna">
                             <h3>Buscar Trabalhadores</h3>
-                            <form onSubmit={handleSearchSubmit} className="search-form">
-                                <div className="search-input-wrapper">
-                                    <Search size={18} className="search-icon" />
-                                    <input type="text" placeholder="Buscar por nome em toda a base..." value={searchTerm} onChange={handleSearchChange} />
-                                </div>
-                                <button type="submit">Buscar</button>
-                            </form>
-                            <button onClick={clearSearch} className="clear-search-button">
-                                <X size={14} /> Limpar e ver sugestões da região
-                            </button>
+                            
+                            <div className="search-container">
+                                <form onSubmit={handleSearchSubmit} className="search-form">
+                                    <div className="search-input-wrapper">
+                                        <Search size={18} className="search-icon" />
+                                        <input type="text" placeholder="Buscar por nome em toda a base..." value={searchTerm} onChange={handleSearchChange} />
+                                    </div>
+                                    <button type="submit">Buscar</button>
+                                </form>
+                                <button onClick={clearSearch} className="clear-search-button">
+                                    <X size={14} /> Limpar e ver sugestões
+                                </button>
+                            </div>
+
                             {isLoadingSugeridos ? ( <p>Buscando...</p> ) : (
                                 <div className="lista-sugeridos">
                                     {trabalhadoresSugeridos.length > 0 ? (

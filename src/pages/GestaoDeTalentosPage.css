@@ -1,15 +1,40 @@
 .gestao-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 2rem;
+    flex-wrap: wrap; 
+    gap: 1rem;
+}
+
+.title-with-counter {
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
+    flex-wrap: wrap;
 }
 
 .gestao-title {
     font-size: 2rem;
     font-weight: 700;
     color: #1f2937;
+    margin: 0; 
 }
+
+/* ===== MODIFICAÇÃO AQUI ===== */
+.total-counter {
+    display: inline-flex; /* Alterado para alinhar o ícone */
+    align-items: center;  /* Alinha o ícone e o texto verticalmente */
+    gap: 0.5rem;          /* Espaço entre o ícone e o texto */
+    background-color: #eef2ff;
+    color: #4338ca;
+    font-size: 0.875rem; 
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid #c7d2fe;
+}
+/* ============================ */
 
 .gestao-subtitle {
     font-size: 1rem;
@@ -153,11 +178,6 @@
     align-self: flex-start;
 }
 
-/* ======================================================= */
-/* SEÇÃO DE BOTÕES DE AÇÃO - REESCRITA E CORRIGIDA     */
-/* ======================================================= */
-
-/* BASE PARA TODOS OS BOTÕES DE AÇÃO */
 .action-button-details,
 .action-button-edit,
 .action-button-delete {
@@ -171,42 +191,32 @@
   vertical-align: middle;
 }
 
-/* BOTÃO EDITAR (LÁPIS) */
 .action-button-edit {
-  color: #6b7280; /* Cinza padrão */
+  color: #6b7280;
 }
 .action-button-edit:hover {
   background-color: #f3f4f6;
   color: #1f2937;
 }
 
-/* BOTÃO EXCLUIR (LIXEIRA) */
 .action-button-delete {
-  color: #ef4444; /* Vermelho */
+  color: #ef4444;
 }
 .action-button-delete:hover {
   background-color: #fee2e2;
 }
 
-/* BOTÃO VER DOSSIÊ (DOCUMENTO) */
 .action-button-details {
-  color: #16a34a; /* A cor padrão dele agora é VERDE */
+  color: #16a34a;
 }
-/* Efeito hover apenas quando NÃO estiver desabilitado */
 .action-button-details:hover:not(:disabled) {
   background-color: #dcfce7;
 }
-/* Estilo para quando o botão estiver DESABILITADO */
 .action-button-details:disabled {
-  color: #d1d5db; /* Cinza claro */
+  color: #d1d5db;
   cursor: not-allowed;
   background-color: transparent;
 }
-
-
-/* ======================================================= */
-/* ESTILOS DO MODAL                      */
-/* ======================================================= */
 
 .filtro-container {
   margin-bottom: 1.5rem;
@@ -317,11 +327,11 @@
 .remove-file-btn {
     background: none;
     border: none;
-    color: #ef4444; /* Vermelho */
+    color: #ef4444;
     cursor: pointer;
     padding: 0;
-    line-height: 0; /* Alinha o ícone perfeitamente */
+    line-height: 0;
 }
 .remove-file-btn:hover {
-    color: #b91c1c; /* Vermelho mais escuro */
+    color: #b91c1c;
 }

@@ -33,6 +33,43 @@
     font-weight: 500;
 }
 
+/* ===== NOVO: Estilo para a seção do Solicitante ===== */
+.cartao-os-secao-solicitante {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #f9fafb; /* Um leve destaque */
+}
+
+.solicitante-icone {
+    flex-shrink: 0;
+    color: #4b5563;
+}
+
+.solicitante-info {
+    min-width: 0;
+}
+
+.solicitante-label {
+    font-size: 0.8rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.solicitante-nome {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0.25rem 0 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #111827;
+}
+/* ================================================= */
+
 .cartao-os-secao-trabalhador {
     display: flex;
     align-items: center;
@@ -75,22 +112,6 @@
 }
 
 .qr-code-placeholder {
-    width: 100px;
-    height: 100px;
-    background-color: #e5e7eb;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #9ca3af;
-    font-weight: 500;
-    flex-shrink: 0;
-}
-
-.plataforma-info { text-align: right; }
-.plataforma-info span { font-size: 0.8rem; color: #6b7280; }
-.plataforma-info p { font-size: 1.25rem; font-weight: bold; color: #111827; margin: 0.25rem 0 0 0; }
-.qr-code-placeholder {
     width: 90px;
     height: 90px;
     background-color: #fff;
@@ -101,3 +122,7 @@
     padding: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.plataforma-info { text-align: right; }
+.plataforma-info span { font-size: 0.8rem; color: #6b7280; }
+.plataforma-info p { font-size: 1.25rem; font-weight: bold; color: #111827; margin: 0.25rem 0 0 0; }

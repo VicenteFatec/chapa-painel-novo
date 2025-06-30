@@ -1,6 +1,6 @@
 import React from 'react';
 import './CartaoOS.css';
-import { User, Hash, Briefcase, Info, AlertTriangle } from 'lucide-react';
+import { User, Hash, Briefcase, Info, AlertTriangle, Building2 } from 'lucide-react';
 import * as QRCode from 'qrcode.react'; 
 
 const formatarDocumento = (doc, tipo) => {
@@ -20,11 +20,11 @@ function CartaoOS({ solicitacao, trabalhador }) {
     }
 
     const qrCodeValue = `https://verificar.chapaamigo.com.br/servico/${solicitacao.id}`;
-
-    // ALTERADO (A VERDADE REVELADA): O nome correto do componente é 'QRCodeSVG'!
     const QRCodeComponent = QRCode.QRCodeSVG;
 
-    // Se por algum motivo o componente ainda não carregar, mostramos um erro.
+    // Lógica para criar o número de OS dinâmico a partir do ID da solicitação
+    const numeroOSDinamico = `OS-${solicitacao.id.slice(-6).toUpperCase()}`;
+
     if (!QRCodeComponent) {
         return <div>Erro ao carregar o componente de QR Code.</div>;
     }
@@ -35,9 +35,21 @@ function CartaoOS({ solicitacao, trabalhador }) {
                 <h2>TICKET DE SERVIÇO</h2>
                 <div className="cartao-os-os">
                     <Hash size={16} />
-                    <span>{solicitacao?.osNumber || 'OS-0000'}</span>
+                    {/* ===== MODIFICAÇÃO AQUI ===== */}
+                    <span>{numeroOSDinamico}</span>
+                    {/* ============================ */}
                 </div>
             </header>
+
+            <section className="cartao-os-secao-solicitante">
+                <div className="solicitante-icone">
+                    <Building2 size={40} />
+                </div>
+                <div className="solicitante-info">
+                    <span className="solicitante-label">SOLICITADO POR</span>
+                    <h3 className="solicitante-nome">{solicitacao?.cliente || 'Cliente não informado'}</h3>
+                </div>
+            </section>
 
             <section className="cartao-os-secao-trabalhador">
                 <div className="trabalhador-avatar">

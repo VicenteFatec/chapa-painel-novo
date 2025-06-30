@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import './GestaoDeTalentosPage.css';
 import Modal from '../components/Modal';
 import ConfirmationModal from '../components/ConfirmationModal';
-import { PlusCircle, User, FileText, Edit, Trash2, Upload, Paperclip, Camera, XCircle } from 'lucide-react';
+// ===== MODIFICAÇÃO AQUI: Adicionado o ícone 'Users' =====
+import { PlusCircle, User, FileText, Edit, Trash2, Upload, Paperclip, Camera, XCircle, Users } from 'lucide-react';
+// =======================================================
 import { db, storage } from '../firebaseConfig'; 
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 import { collection, addDoc, getDocs, query, orderBy, Timestamp, writeBatch, doc, updateDoc, deleteDoc } from 'firebase/firestore';
@@ -13,6 +15,7 @@ import { IMaskInput } from 'react-imask';
 const VALORES_INICIAIS_FORM = { nomeCompleto: '', cpf: '', rg: '', telefone: '', status: 'Disponível', fotoURL: '', dossieURL: '', dataNascimento: '', };
 
 function GestaoDeTalentosPage() {
+    // ... (toda a lógica do componente permanece exatamente a mesma) ...
     const [chapas, setChapas] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,49 +62,19 @@ function GestaoDeTalentosPage() {
     const fecharModalExclusao = () => { setTrabalhadorParaExcluir(null); setShowDeleteConfirm(false); };
     const handleExcluirTrabalhador = async () => { if (!trabalhadorParaExcluir) return; await excluirArquivoDoStorage(trabalhadorParaExcluir.fotoURL); await excluirArquivoDoStorage(trabalhadorParaExcluir.dossieURL); try { await deleteDoc(doc(db, "chapas_b2b", trabalhadorParaExcluir.id)); fecharModalExclusao(); fetchChapas(); } catch (error) { console.error("Erro ao excluir: ", error); } };
     const triggerFileImport = () => { fileInputRef.current.click(); };
+    const formatarTelefoneImportado = (tel) => { return tel; };
     const handleFileImport = (e) => { const file = e.target.files[0]; if (!file) return; setImportStatus('Lendo arquivo...'); Papa.parse(file, { header: true, skipEmptyLines: true, complete: async (results) => { setImportStatus(`Encontrados ${results.data.length} registros. Processando...`); const batch = writeBatch(db); results.data.forEach((row) => { const dataNascimentoTS = row['Data de Nascimento'] ? parseDateFromInput(row['Data de Nascimento'].split('/').reverse().join('-')) : null; const telefoneFormatado = row.Telefone ? formatarTelefoneImportado(row.Telefone) : ''; const chapaData = { nomeCompleto: row.Nome || '', cpf: row.CPF || '', telefone: telefoneFormatado, status: 'Disponível', dataNascimento: dataNascimentoTS, regiao: getRegionFromDDD(telefoneFormatado), dataImportacao: Timestamp.now(), fotoURL: '', dossieURL: '' }; const docRef = doc(collection(db, "chapas_b2b")); batch.set(docRef, chapaData); }); try { await batch.commit(); setImportStatus(`Sucesso! ${results.data.length} trabalhadores importados.`); fetchChapas(); } catch (error) { setImportStatus('Erro ao importar.'); console.error("Erro na importação: ", error); } } }); };
-    // CORREÇÃO: Lógica de renderização da tabela para evitar o aviso de 'whitespace'
+    
     let tableContent;
     if (isLoading) {
         tableContent = (<tr><td colSpan="4" style={{ textAlign: 'center', padding: '2rem' }}>Carregando trabalhadores...</td></tr>);
     } else if (chapasFiltrados.length > 0) {
         tableContent = chapasFiltrados.map((chapa) => (
             <tr key={chapa.id}>
-                <td>
-                    <div className="user-cell">
-                        <div className="user-avatar">
-                            {chapa.fotoURL ? <img src={chapa.fotoURL} alt={chapa.nomeCompleto} className="avatar-image"/> : <User size={18} />}
-                        </div>
-                        <div>
-                            <span className="user-name">{chapa.nomeCompleto}</span>
-                            <span className="user-cpf">{chapa.cpf}</span>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <span className={`status-badge status-${(chapa.status || 'disponível').toLowerCase().replace(/ /g,'-')}`}>
-                        {chapa.status}
-                    </span>
-                </td>
-                <td>
-                    <div className="contact-cell">
-                        <span>{chapa.telefone}</span>
-                        <span className="region-tag">{chapa.regiao}</span>
-                    </div>
-                </td>
-                <td>
-                    <div className='acoes-cell'>
-                        <button className="action-button-details" title={chapa.dossieURL ? "Ver Dossiê" : "Dossiê não disponível"} onClick={() => chapa.dossieURL && window.open(chapa.dossieURL, '_blank', 'noopener,noreferrer')} disabled={!chapa.dossieURL}>
-                            <FileText size={18} />
-                        </button>
-                        <button className="action-button-edit" title="Editar Perfil" onClick={() => abrirModalEdicao(chapa)}>
-                            <Edit size={18} />
-                        </button>
-                        <button className="action-button-delete" title="Excluir Perfil" onClick={() => abrirModalExclusao(chapa)}>
-                            <Trash2 size={18} />
-                        </button>
-                    </div>
-                </td>
+                <td> <div className="user-cell"> <div className="user-avatar"> {chapa.fotoURL ? <img src={chapa.fotoURL} alt={chapa.nomeCompleto} className="avatar-image"/> : <User size={18} />} </div> <div> <span className="user-name">{chapa.nomeCompleto}</span> <span className="user-cpf">{chapa.cpf}</span> </div> </div> </td>
+                <td> <span className={`status-badge status-${(chapa.status || 'disponível').toLowerCase().replace(/ /g,'-')}`}> {chapa.status} </span> </td>
+                <td> <div className="contact-cell"> <span>{chapa.telefone}</span> <span className="region-tag">{chapa.regiao}</span> </div> </td>
+                <td> <div className='acoes-cell'> <button className="action-button-details" title={chapa.dossieURL ? "Ver Dossiê" : "Dossiê não disponível"} onClick={() => chapa.dossieURL && window.open(chapa.dossieURL, '_blank', 'noopener,noreferrer')} disabled={!chapa.dossieURL}> <FileText size={18} /> </button> <button className="action-button-edit" title="Editar Perfil" onClick={() => abrirModalEdicao(chapa)}> <Edit size={18} /> </button> <button className="action-button-delete" title="Excluir Perfil" onClick={() => abrirModalExclusao(chapa)}> <Trash2 size={18} /> </button> </div> </td>
             </tr>
         ));
     } else {
@@ -112,7 +85,17 @@ function GestaoDeTalentosPage() {
         <div>
             <div className="gestao-header">
                 <div>
-                    <h1 className="gestao-title">Gestão de Trabalhadores</h1>
+                    <div className="title-with-counter">
+                        <h1 className="gestao-title">Gestão de Trabalhadores</h1>
+                        {/* ===== MODIFICAÇÃO AQUI: Adicionado ícone e texto ===== */}
+                        {!isLoading && 
+                            <span className="total-counter">
+                                <Users size={16} /> 
+                                {chapas.length} Perfis Cadastrados
+                            </span>
+                        }
+                        {/* ====================================================== */}
+                    </div>
                     <p className="gestao-subtitle">Adicione e gerencie os Chapas de elite disponíveis para seus clientes.</p>
                 </div>
                 <div className="action-buttons-group">

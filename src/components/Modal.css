@@ -1,60 +1,99 @@
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
 .modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  max-width: 500px;
-  animation: slide-down 0.3s ease-out;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 700px; /* Mantendo uma largura máxima razoável */
+    animation: slide-down 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    /* max-height: 90vh; REMOVIDO */
 }
 
 .modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+}
+
+.modal-body {
+    flex-grow: 1;
+    padding-top: 1rem;
+    /* overflow-y: auto; REMOVIDO */
 }
 
 .modal-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
 }
 
 .modal-close-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #6c757d;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6c757d;
 }
 
 .modal-close-button:hover {
-  color: #333;
+    color: #333;
 }
 
-/* Animação para o modal surgir */
 @keyframes slide-down {
-  from {
-    transform: translateY(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* --- RESPONSIVIDADE INICIAL PARA A LISTA DE TRABALHADORES --- */
+/* Em telas maiores (tablets e desktops), tente um layout de 2 colunas para a lista */
+@media (min-width: 640px) {
+    .lista-sugeridos {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Duas colunas */
+        gap: 0.5rem;
+    }
+    .sugerido-item {
+        flex-direction: column; /* Organiza os itens em coluna no layout de grid */
+        align-items: flex-start;
+        border: 1px solid #eee;
+        border-radius: 6px;
+        padding: 0.75rem;
+    }
+    .sugerido-info {
+        margin-bottom: 0.5rem;
+    }
+    .alocar-btn {
+        width: 100%; /* O botão ocupa a largura total no layout de coluna */
+    }
+}
+
+/* Em telas menores (smartphones), volte para a lista em coluna única */
+@media (max-width: 639px) {
+    .lista-sugeridos {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
